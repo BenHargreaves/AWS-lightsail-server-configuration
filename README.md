@@ -108,9 +108,9 @@ To setup your Item catalog on an apache server, you'll first need to install te 
 ```
 sudo apt-get install apache2
 sudo apt-get install libapache2-mod-wsgi 
-sudo apt-get python python-pip
-sudo apt-get git
-sudo apt-get postgresql
+sudo apt-get install python python-pip
+sudo apt-get install git
+sudo apt-get install postgresql
 ```
 
 ### Configure PostgresQL Database for Item catalog
