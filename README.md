@@ -14,14 +14,14 @@ ssh grader@35.182.92.136 -p 2200 -i ~/.ssh/graderkey
 
 ## Configurations summary
 
-#### Update all system packages
+### Update all system packages
 Run the following 2 commands from within the Lightsail instance to make sure system packages are up to date
 ```
 sudo apt-get update
 sudo apt-get upgrade
 ```
 
-#### Change SSH default port and configure UFW
+### Change SSH default port and configure UFW
 Modify the SSHD_Config file to listen for SSH on Port 2200
 ```
 sudo nano /etc/ssh/sshd_config
@@ -49,7 +49,7 @@ sudo ufw status
 
 NOTE: you will need to open the same ports on the Adminstrator panel of your Lightsail instance's Networking tab.
 
-#### Adding Grader user, and giving sudo access
+### Adding Grader user, and giving sudo access
 While logged into the Lightsail instance, use the following command to create a new User named 'Grader'
 ```
 sudo adduser grader
@@ -67,7 +67,7 @@ grader ALL=(ALL) NOPASSWD:ALL
 ```
 grader user should now be created and have Sudo access
 
-#### Generating SSH key for grader user
+### Generating SSH key for grader user
 On your local Machine, open up a bash terminal and run the following command
 ```
 ssh-keygen
@@ -93,7 +93,7 @@ sudo chmod 644 .ssh/authorized_keys
 
 NOTE: For Lightsail, there is an extra step to get the SSH keys working. You will need to go to your Lightsail Account management console, and upload the Public Key (graderkey.pub) to SSH Key Pair section.
 
-#### Forcing SSH key authentication
+### Forcing SSH key authentication
 Open the SSHD config file using the following command
 ```
 sudo nano /etc/ssh/sshd_config
@@ -103,7 +103,7 @@ Locate the line which says `PasswordAuthentication yes` and change it to `Passwo
 sudo service ssh restart
 ```
 
-#### Install neccessary packages to serve website
+### Install neccessary packages to serve website
 To setup your Item catalog on an apache server, you'll first need to install te following packages
 ```
 sudo apt-get install apache2
@@ -113,7 +113,7 @@ sudo apt-get git
 sudo apt-get postgresql
 ```
 
-#### Configure PostgresQL Database for Item catalog
+### Configure PostgresQL Database for Item catalog
 Change to Postgres user in terminal
 ```
 sudo su postgres
@@ -133,7 +133,7 @@ Give 'catalog' user full access to the Catalog DB
 GRANT ALL PERMISSIONS ON DATABASE catalog TO catalog;
 ```
 
-#### Clone Item catalog repo and install to Apache directory
+### Clone Item catalog repo and install to Apache directory
 In the `/var/www` directory, create the `Itemcatalog` directory using `mkdir Itemcatalog`, and change to this newly created directory. Next, clone the Item Catalog repo into this directory using the command
 ```
 sudo git clone https://github.com/BenHargreaves/Item-catalog.git
@@ -184,7 +184,7 @@ sudo env/bin/python database_setup.py
 sudo env/bin/python Itemseeder.py
 ```
 
-#### Enable Virtual host to serve your site
+### Enable Virtual host to serve your site
 Add a new configuration file to Apache's 'Sites-Available' or 'Sites-enabled' directories to enable our new virtual host.
 ```
 sudo nano /etc/apache2/sites-available/Itemcatalog.conf
@@ -217,6 +217,6 @@ sudo a2ensite Itemcatalog
 sudo service apache2 restart
 ```
 
-#### Sites and Resources used
+### Sites and Resources used
 1. (Huge help!) https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
 2. PSQL setup https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps
