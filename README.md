@@ -36,7 +36,6 @@ Now, configure UFW to allow SSH on port 2200, HTTP on port 80, and NTP on port 1
 ```
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
-sudo ufw allow ssh
 sudo ufw allow 2200/tcp 
 sudo ufw allow HTTP
 sudo ufw allow NTP
