@@ -4,7 +4,7 @@ AWS Lightsail configuration summary for Udacity Fullstack Nanodegree.
 ~~The live version of this project can be viewed at http://35.182.92.136.xip.io 
 NOTE: Xip.io is a free 'wildcard DNS' service which resolves the IP portion of the provided web address against xip.io's custom DNS server.
 While you can certainly still access the project at http://35.182.92.136/ - Google OAuth will not function properly, as it will not accept a direct IP address as an Authorized Redirect URI.~~  
-The live version has been turned off as of September 9 2021 because it was getting expensive. Instructions below should still be valid however.
+> The live version has been turned off as of September 9 2021 because it was getting expensive. Instructions below should still be valid however.
 
 ## Accessing Lightsail instance as Grader user via SSH
 Copy the graderuser SSH key provided in the submission notes into a file, and into the `~\Users\<username>\.ssh` folder. The Key password is also provided in the notes. The Public key has already been installed on the Lightsail instance to allow remote login for Grader user. 
